@@ -25,7 +25,7 @@ public class Main {
         // Hace visible la ventana.
         principal.setVisible(true);
         }catch(Exception err){
-            mostrarVentanaDeError("Ocurrió un error. Verifique los datos.");
+            mostrarVentanaDeError("Ocurrió un error.");
         }
 
     }

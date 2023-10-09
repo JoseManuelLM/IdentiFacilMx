@@ -1,5 +1,6 @@
 package mx.itson.identifacilmx.ui;
 
+import javax.swing.JOptionPane;
 import mx.itson.identifacilmx.negocio.Generador;
 
 /**
@@ -12,7 +13,9 @@ public class Ventana extends javax.swing.JFrame {
     public Ventana() {
         initComponents();
     }
-
+    public static void mostrarVentanaDeError(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
+    }
     Generador c = new Generador();
     
     //Se guarda el sexo obtenido
@@ -285,6 +288,8 @@ public class Ventana extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+try{
         // Obtiene la información que se registro
         c.getNombrecompleto(txfName.getText(), txfApellidoP.getText(), txfApellidoM.getText());
         c.getFecha(jsDia.getValue().toString(), jsMes.getValue().toString(), jsAño.getValue().toString());
@@ -294,6 +299,10 @@ public class Ventana extends javax.swing.JFrame {
         c.curpGen();
         // Establece la CURP generada en un espacio correspondiente
         this.txfCurpG.setText(c.curpg);
+}catch(Exception err){
+        mostrarVentanaDeError("Favor de verificar los datos.");
+}
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void radioBtnHombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radioBtnHombreMouseClicked
